@@ -18,9 +18,10 @@ namespace Wedding.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Rsvp(Rsvp rsvp)
         {
-            return View();
+            return View("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

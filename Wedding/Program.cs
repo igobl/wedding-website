@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Wedding.ef;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(
+        "Data Source=localhost;Initial Catalog=wedding;Persist Security Info=True;Integrated Security=True;");
+});
 
 var app = builder.Build();
 

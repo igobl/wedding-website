@@ -9,8 +9,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(
-        "Data Source=localhost;Initial Catalog=wedding;Persist Security Info=True;Integrated Security=True;");
+        "Data Source=localhost;Initial Catalog=wedding;User Id=wedding-user;Password=abc123;TrustServerCertificate=True;");
 });
+
 
 var app = builder.Build();
 

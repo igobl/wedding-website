@@ -11,5 +11,7 @@ namespace Wedding.ef
         }
 
         public DbSet<Attendee> Attendees { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
+        public DbSet<Rsvp> Rsvps { get; set; }
     }
 }

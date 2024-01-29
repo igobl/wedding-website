@@ -9,7 +9,6 @@ namespace Wedding.ef.Entities
         [Required]
         [MaxLength(100)]
         public string SendTo { get; set; }
-        [Required] 
         public DateTime? SentTimeStamp { get; set; }
         [Required]
         public Guid PublicId { get; set; }

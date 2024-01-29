@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Wedding.ef.Entities.Invitation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendees.ElementAt(0).FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendees.ElementAt(0).LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendees.ElementAt(0).FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendees.ElementAt(0).LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SendTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SentTimeStamp)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Attendees.ElementAt(0).FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attendees.ElementAt(0).LastName)
+            </td>
+            @if (item.Attendees.ElementAtOrDefault(1) != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attendees.ElementAt(1).FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attendees.ElementAt(1).LastName)
+                </td>
+            }
+            else
+            {
+                    <td></td>
+                    <td></td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.SendTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SentTimeStamp)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

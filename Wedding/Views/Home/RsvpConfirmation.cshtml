@@ -1,0 +1,39 @@
+﻿@model Wedding.ef.Entities.Rsvp
+
+@{
+    ViewData["Title"] = "RsvpConfirmation";
+}
+
+<h1>RSVP</h1>
+
+<div>
+    <h4>Thanks for your Response! If anything changes just message one of us :)</h4>
+    <hr />
+
+    <table class="table-bordered">
+        <tbody>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.IsAttending)</th>
+            <td>
+
+                @if (Model.IsAttending)
+                {
+                    <p>Yes</p>
+                }
+                else
+                {
+                    <p>No</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Timestamp)</th>
+            <td>@Html.DisplayFor(model => model.Timestamp)</td>
+        </tr>
+        <tr>
+            <th scope="row">@Html.DisplayNameFor(model => model.Notes)</th>
+            <td>@Html.DisplayFor(model => model.Notes)</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,403 +1,289 @@
-﻿@model Wedding.Models.Rsvp
+﻿@model Wedding.ef.Entities.Invitation?
 
 <body>
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column align-items-center justify-content-center">
-        <h2>The Wedding</h2>
-        <h1>Ciara &amp; Ian</h1>
-        <p>
-            <span class="wedding-date">04.10.2024</span>
-        </p>
-        <a href="#about" class="btn-get-started scrollto"><i class="bi bi-chevron-double-down"></i></a>
-    </section><!-- End Hero -->
-    <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
-        <div class="container d-flex align-items-center justify-content-between">
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column align-items-center justify-content-center">
+    <h2>The Wedding</h2>
+    <h1>Ciara &amp; Ian</h1>
+    <p>
+        <span class="wedding-date">04.10.2024</span>
+    </p>
+    <a href="#about" class="btn-get-started scrollto"><i class="bi bi-chevron-double-down"></i></a>
+</section><!-- End Hero -->
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
-            <div class="logo">
-                <h1>Ciara &amp; Ian</h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
-            </div>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Bride & Groom</a></li>
-                    <li><a class="nav-link scrollto" href="#when">The Big Day</a></li>
-                    <li><a class="nav-link scrollto" href="#accommodation">Accommodation</a></li>
-                    <li><a class="nav-link scrollto" href="#day2">Day 2</a></li>
-                    <li><a class="nav-link scrollto" href="#rsvp">RSVP</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-
+        <div class="logo">
+            <h1>Ciara &amp; Ian</h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
-    </header><!-- End Header -->
 
-    <main id="main">
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">Bride & Groom</a></li>
+                <li><a class="nav-link scrollto" href="#when">The Big Day</a></li>
+                <li><a class="nav-link scrollto" href="#accommodation">Accommodation</a></li>
+                <li><a class="nav-link scrollto" href="#day2">Day 2</a></li>
+                <li><a class="nav-link scrollto" href="#rsvp">RSVP</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
 
-        <section id="about" class="about">
-            <div class="container">
+    </div>
+</header><!-- End Header -->
 
-                <div class="row no-gutters">
-                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
-                    <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
-                        <div class="content d-flex flex-column justify-content-center">
-                            <h3>Ciara &amp; Ian are getting married!</h3>
-                            <p>
-                                We are getting married on Friday the 4th of October 2024 and would love if you could join us.
-                            </p>
-                            <div class="row">
-                                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                                    <div class="count-box">
-                                        <i class="bi bi-balloon-heart"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="@((new DateTime(2024, 10, 4, 12, 0, 0) - DateTime.UtcNow).TotalDays)" data-purecounter-duration="1" class="purecounter"></span>
-                                        <p>Days until the big day! The countdown is on.</p>
-                                    </div>
-                                </div>
+<main id="main">
+
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="row no-gutters">
+            <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+            <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+                <div class="content d-flex flex-column justify-content-center">
+                    <h3>Ciara &amp; Ian are getting married!</h3>
+                    <p>
+                        We are getting married on Friday the 4th of October 2024 and would love if you could join us.
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="count-box">
+                                <i class="bi bi-balloon-heart"></i>
+                                <span data-purecounter-start="0" data-purecounter-end="@((new DateTime(2024, 10, 4, 12, 0, 0) - DateTime.UtcNow).TotalDays)" data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Days until the big day! The countdown is on.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+<br />
+<hr />
+
+
+<section id="when" class="when">
+    <div class="container">
+                
+        <div class="row no-gutters">
+            <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+                <div class="content d-flex flex-column justify-content-center">
+                    <h3 class="section-title">Location</h3>
+                    <p>
+                        The entire ceremony &amp; wedding celebrations will be taking place at Clonabreany House, an Irish Country House and Estate just one hour from Dublin and 15 minutes from Kells. Full Address - Clonabreany House, Crossakiel, Co. Meath, A82 R9C8.
+                    </p>
+                    <p>Please note that unfortunately we cannot accommodate children at the venue - thank you for understanding.</p>
+                    <p>Google Maps Link: <a href="https://g.co/kgs/DbXKb5t">Click Here!</a></p>
+                </div><!-- End .content-->
+            </div>
+            <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+        </div>
 
         <br />
         <hr />
 
+        <div class="section-title">
+            <h2>Timeline</h2>
+        </div>
 
-        <section id="when" class="when">
-            <div class="container">
-
-                <div class="row no-gutters">
-                    <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
-                        <div class="content d-flex flex-column justify-content-center">
-                            <h3 class="section-title">Location</h3>
-                            <p>
-                                The entire ceremony &amp; wedding celebrations will be taking place at Clonabreany House, an Irish Country House and Estate just one hour from Dublin and 15 minutes from Kells. Full Address - Clonabreany House, Crossakiel, Co. Meath, A82 R9C8.
-                            </p>
-                            <p>Please note that unfortunately we cannot accommodate children at the venue - thank you for understanding.</p>
-                        </div><!-- End .content-->
-                    </div>
-                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="timeline-item">
+                    <h4><i class="bi bi-car-front-fill"></i>14:00 - Guest Arrival</h4>
+                    <p>Guests arrive on the grounds and are greeted by the grooms party.</p>
                 </div>
 
-                <br />
-                <hr />
-
-                <div class="section-title">
-                    <h2>Timeline</h2>
+                <div class="timeline-item">
+                    <h4><i class="bi bi-balloon-heart"></i>15:00 - Wedding Ceremony</h4>
+                    <p>Join us for a short marriage ceremony in the ceremony room</p>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="timeline-item">
-                            <h4><i class="bi bi-car-front-fill"></i>14:00 - Guest Arrival</h4>
-                            <p>Guests arrive on the grounds and are greeted by the grooms party.</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h4><i class="bi bi-balloon-heart"></i>15:00 - Wedding Ceremony</h4>
-                            <p>Join us for a short marriage ceremony in the ceremony room</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h4><i class="bi bi-cup-straw"></i>15:30 - Drinks Reception</h4>
-                            <p>Drinks reception in the main house, with finger food, drinks, teas and coffees.</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h4><i class="bi bi-cake"></i>18:00 - Dinner</h4>
-                            <p>4 course meal in the dining room</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <h4><i class="bi bi-speaker"></i>21:00 to Late - Dance the Night Away</h4>
-                            <p>Music, Dancing, Ties on Heads, Knee Slides, Shots of Baby Guinness.....</p>
-                        </div>
-                    </div>
+                <div class="timeline-item">
+                    <h4><i class="bi bi-cup-straw"></i>15:30 - Drinks Reception</h4>
+                    <p>Drinks reception in the main house, with finger food, drinks, teas and coffees.</p>
                 </div>
 
-            </div>
-        </section>
-
-
-        <section id="accommodation" class="accommodation section-bg">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Accommodation</h2>
-                </div>
-                
-                <div class="row no-gutters">
-                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
-                    <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
-                        <div class="content d-flex flex-column justify-content-center">
-                            <p>Unfortunately there is limited accommodation at Clonabreany house. The rooms available on-site are allocated by the Bride and Groom, we will already have been in contact if you are staying at the venue.</p>
-                            <p>For those not staying at the venue, there are a range of local accommodation near by. We will be running taxi service from Clonabreany house to the surround areas between 1AM - 3AM. Below are some nearby options.</p>
-                        </div><!-- End .content-->
-                    </div>
-                </div>
-                <br/>
-
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi-house-heart-fill"></i></div>
-                            <h2 class="title"><a href="https://www.headfortarms.ie/">Headfort Arms Hotel</a></h2>
-                            <p class="description">Kells - 15 minute drive</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi-house-heart"></i></div>
-
-                            <h4 class="title"><a href="">Some Hotel</a></h4>
-                            <p class="description">Crossakiel - 5 minute drive</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi-house-heart-fill"></i></div>
-
-                            <h4 class="title"><a href="">Some Other Hotel</a></h4>
-                            <p class="description">Wherever -10 minute drive</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box">
-
-                            <div class="icon"><i class="bi-house-heart"></i></div>
-                            <h4 class="title"><a href="">Whatever</a></h4>
-                            <p class="description">Heya</p>
-                        </div>
-                    </div>
-
+                <div class="timeline-item">
+                    <h4><i class="bi bi-cake"></i>18:00 - Dinner</h4>
+                    <p>4 course meal in the dining room</p>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- ======= Portfolio Section ======= -->
-        <section id="day2" class="portfolio section-bg">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Day 2</h2>
-                    <p>We will be having a post wedding debrief the following day at 7PM in Roddys Bolands. We would love if you could join us.</p>
+                <div class="timeline-item">
+                    <h4><i class="bi bi-speaker"></i>21:00 to Late - Dance the Night Away</h4>
+                    <p>Music, Dancing, Ties on Heads, Knee Slides, Shots of Baby Guinness.....</p>
                 </div>
-
-                @* <div class="row"> *@
-                @*     <div class="col-lg-12 d-flex justify-content-center"> *@
-                @*         <ul id="portfolio-flters"> *@
-                @*             <li data-filter="*" class="filter-active">All</li> *@
-                @*             <li data-filter=".filter-app">App</li> *@
-                @*             <li data-filter=".filter-card">Card</li> *@
-                @*             <li data-filter=".filter-web">Web</li> *@
-                @*         </ul> *@
-                @*     </div> *@
-                @* </div> *@
-                @* *@
-                @* <div class="row portfolio-container"> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-app"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-1.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>App 1</h4> *@
-                @*                 <p>App</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-web"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Web 3</h4> *@
-                @*                 <p>Web</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-app"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-3.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>App 2</h4> *@
-                @*                 <p>App</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-card"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-4.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Card 2</h4> *@
-                @*                 <p>Card</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-web"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-5.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Web 2</h4> *@
-                @*                 <p>Web</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-app"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-6.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>App 3</h4> *@
-                @*                 <p>App</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-card"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-7.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Card 1</h4> *@
-                @*                 <p>Card</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-card"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-8.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Card 3</h4> *@
-                @*                 <p>Card</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @*     <div class="col-lg-4 col-md-6 portfolio-item filter-web"> *@
-                @*         <div class="portfolio-wrap"> *@
-                @*             <img src="img/portfolio/portfolio-9.jpg" class="img-fluid" alt=""> *@
-                @*             <div class="portfolio-info"> *@
-                @*                 <h4>Web 3</h4> *@
-                @*                 <p>Web</p> *@
-                @*             </div> *@
-                @*             <div class="portfolio-links"> *@
-                @*                 <a href="img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a> *@
-                @*                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> *@
-                @*             </div> *@
-                @*         </div> *@
-                @*     </div> *@
-                @* *@
-                @* </div> *@
-
-            </div>
-        </section><!-- End Portfolio Section -->
-        <!-- ======= Testimonials Section ======= -->
-        <section id="rsvp" class="rsvp section-bg">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>RSVP</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <form asp-action="Rsvp">
-                            
-                            <div class="form-group">
-                                <label asp-for="IsAttending" class="control-label"></label>
-                                <input asp-for="IsAttending" type="checkbox" />
-                                <span asp-validation-for="IsAttending" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label asp-for="IsAttendingDay2" class="control-label"></label>
-                                <input asp-for="IsAttendingDay2" type="checkbox"/>
-                                <span asp-validation-for="IsAttendingDay2" class="text-danger"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label asp-for="DietaryRequirements" class="control-label"></label>
-                                <input asp-for="DietaryRequirements" class="form-control"/>
-                                <span asp-validation-for="DietaryRequirements" class="text-danger"></span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-primary"/>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End Testimonials Section -->
-
-    </main><!-- End #main -->
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Designed by <strong><span>göblmedia</span></strong>.
             </div>
         </div>
-    </footer><!-- End  Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </div>
+</section>
 
-    <!-- Vendor JS Files -->
-    <script src="vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="vendor/php-email-form/validate.js"></script>
+<hr />
 
-    <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
+<section id="accommodation" class="accommodation">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Accommodation</h2>
+        </div>
+
+        <div class="row no-gutters">
+            <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+            <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+                <div class="content d-flex flex-column justify-content-center">
+                    <p>Unfortunately there is limited accommodation at Clonabreany house. The rooms available on-site are allocated by the Bride and Groom, we will already have been in contact if you are staying at the venue.</p>
+                    <p>For those not staying at the venue, there are a range of local accommodation near by. We will be running taxi service from Clonabreany house to the surround areas between 1AM - 3AM. Below are some nearby options.</p>
+                </div><!-- End .content-->
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box">
+                    <div class="icon"><i class="bi-house-heart-fill"></i></div>
+                    <h2 class="title"><a href="https://www.headfortarms.ie/">Headfort Arms Hotel</a></h2>
+                    <p class="description">Kells - 15 minute drive</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box">
+                    <div class="icon"><i class="bi-house-heart"></i></div>
+
+                    <h4 class="title"><a href="">Some Hotel</a></h4>
+                    <p class="description">Crossakiel - 5 minute drive</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box">
+                    <div class="icon"><i class="bi-house-heart-fill"></i></div>
+
+                    <h4 class="title"><a href="">Some Other Hotel</a></h4>
+                    <p class="description">Wherever -10 minute drive</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box">
+
+                    <div class="icon"><i class="bi-house-heart"></i></div>
+                    <h4 class="title"><a href="">Whatever</a></h4>
+                    <p class="description">Heya</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<hr />
+
+<section id="day2" class="portfolio">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Day 2</h2>
+            <p>We will be having a post wedding debrief the following day at 7PM in Roddys Bolands. We would love if you could join us.</p>
+        </div>
+
+
+    </div>
+</section>
+
+<section id="rsvp" class="rsvp section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>RSVP</h2>
+            @if (Model == null)
+            {
+                <p>Please use the link you were sent to RSVP :)</p>
+            }
+            else
+            {
+                string attendees = "";
+                if (Model.Attendees.Count == 1)
+                {
+                    attendees = $"{Model.Attendees.First().FirstName} {Model.Attendees.First().LastName}";
+                }
+                else if (Model.Attendees.Count == 2)
+                {
+                    attendees = $"{Model.Attendees.First().FirstName} {Model.Attendees.First().LastName} & {Model.Attendees.ElementAt(1).FirstName} {Model.Attendees.ElementAt(1).LastName}";
+                }
+
+                <p>Hi @attendees,</p>
+                <p>We would love if you could join us on our wedding day.</p>
+                <p>Please let us know if you are attending by RSVPing below. If you have any special dietary requirements please let us know below in the notes box.</p>
+                <br/>    
+                <p>Any questions feel free to reach out to either one of us. Thanks x</p>
+            }
+        </div>
+
+        @if (Model != null)
+        {
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="Rsvp">
+                        
+                        <input type="hidden" name="rsvpid" value="@Model.PublicId"/>
+
+                        <label class="control-label">RSVP:  </label>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" value="true" name="rsvp" id="btnradio1" autocomplete="off" required="required">
+                            <label class="btn btn-outline-primary" for="btnradio1">Attending</label>
+
+                            <input type="radio" class="btn-check" value="false "name="rsvp" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio2">Not Attending</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Notes:</label>
+                            <textarea id="notes" name="notes" class="form-control" rows="5" placeholder="Dietry Requirements etc."></textarea>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <input type="submit" value="Send Response" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
+    </div>
+</section><!-- End Testimonials Section -->
+
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Designed by <strong><span>göblmedia</span></strong>.
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/glightbox/js/glightbox.min.js"></script>
+<script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="vendor/swiper/swiper-bundle.min.js"></script>
+<script src="vendor/waypoints/noframework.waypoints.js"></script>
+<script src="vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="js/main.js"></script>
 
 </body>

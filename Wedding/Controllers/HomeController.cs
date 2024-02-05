@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using Wedding.ef;
+using Wedding.ef.Entities;
 using Wedding.Models;
+using Rsvp = Wedding.Models.Rsvp;
 
 namespace Wedding.Controllers
 {
@@ -16,15 +19,37 @@ namespace Wedding.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
-            var a = _context.Attendees.FirstOrDefault();
-            return View();
+            Invitation? invitation = null;
+            if (Guid.TryParse(id, out Guid guid))
+            {
+                invitation = _context.Invitations.Include(a => a.Attendees).FirstOrDefault(a => a.PublicId == guid);
+            }
+            return View(invitation);
         }
 
         [HttpPost]
-        public IActionResult Rsvp(Rsvp rsvp)
+        public async Task<IActionResult> Rsvp(string rsvpid, string rsvp, string notes)
         {
+            if(Guid.TryParse(rsvpid, out Guid publicId) && bool.TryParse(rsvp, out bool isAttending))
+            {
+                var invitation = await _context.Invitations.FirstAsync(a => a.PublicId == publicId);
+
+                var rsvpResponse = new ef.Entities.Rsvp()
+                {
+                    IsAttending = isAttending,
+                    Notes = notes,
+                    Invitation = invitation,
+                    Timestamp = DateTime.UtcNow
+                };
+
+                await _context.Rsvps.AddAsync(rsvpResponse);
+                await _context.SaveChangesAsync();
+
+                return View("RsvpConfirmation", rsvpResponse);
+            }
+
             return View("Index");
         }
 

@@ -24,7 +24,10 @@ namespace Wedding.Controllers
             Invitation? invitation = null;
             if (Guid.TryParse(id, out Guid guid))
             {
-                invitation = _context.Invitations.Include(a => a.Attendees).FirstOrDefault(a => a.PublicId == guid);
+                invitation = _context.Invitations
+                    .Include(a => a.Attendees)
+                    .Include(a => a.Rsvp)
+                    .FirstOrDefault(a => a.PublicId == guid);
             }
             return View(invitation);
         }
@@ -40,7 +43,7 @@ namespace Wedding.Controllers
                 {
                     IsAttending = isAttending,
                     Notes = notes,
-                    Invitation = invitation,
+                    InvitationId = invitation.Id,
                     Timestamp = DateTime.UtcNow
                 };
 

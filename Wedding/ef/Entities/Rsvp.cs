@@ -15,7 +15,10 @@ namespace Wedding.ef.Entities
         public DateTime Timestamp { get; set; }
         [MaxLength(1000)]
         public string? Notes { get; set; }
+        public int? InvitationId { get; set; }
+
+
         [Required]
-        public virtual Invitation Invitation { get; set; }
+        public virtual Invitation? Invitation { get; set; }
     }
 }

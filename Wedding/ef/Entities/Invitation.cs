@@ -14,5 +14,6 @@ namespace Wedding.ef.Entities
         public Guid PublicId { get; set; }
 
         public virtual ICollection<Attendee> Attendees { get; set; }
+        public virtual Entities.Rsvp? Rsvp { get; set; }
     }
 }

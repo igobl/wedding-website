@@ -16,7 +16,15 @@ namespace Wedding.ef
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Invitation>().HasIndex(a => a.PublicId).IsUnique();
+            modelBuilder.Entity<Invitation>()
+                .HasIndex(a => a.PublicId)
+                .IsUnique();
+
+            modelBuilder.Entity<Invitation>()
+                .HasOne(a => a.Rsvp)
+                .WithOne(a => a.Invitation)
+                .HasForeignKey<Rsvp>(a => a.InvitationId)
+                .IsRequired(false);
 
             base.OnModelCreating(modelBuilder);
         }

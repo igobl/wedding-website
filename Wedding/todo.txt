@@ -1,0 +1,4 @@
+- Populate the Hotels and add links to those hotels
+- Create email template for invitation
+- Create Azure Account
+- Create deployment pipeline (github actions maybe?)

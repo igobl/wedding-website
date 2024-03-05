@@ -8,8 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(
-        "Data Source=localhost;Initial Catalog=wedding;User Id=wedding-user;Password=abc123;TrustServerCertificate=True;");
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WeddingDb"));
 });
 
 

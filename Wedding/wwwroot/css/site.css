@@ -24,13 +24,13 @@
 }
 
 .when .image {
-    background: url("../../images/clonabreany_1.jpeg") center center no-repeat;
+    background: url("../../images/clonabreany_2.jpg") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }
 
 .accommodation .image {
-    background: url("../../images/louie_1.jpg") center center no-repeat;
+    background: url("../../images/clonabreany_3.jpg") center center no-repeat;
     background-size: cover;
     min-height: 500px;
 }

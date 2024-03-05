@@ -64,3 +64,8 @@ jobs:
           slot-name: 'Production'
           package: .
           
+      - name: Run Database Migrations 
+        run: | 
+            dotnet tool install --global dotnet-ef
+            dotnet tool restore
+            dotnet ef database update -p DotNetCoreSqlDb --connection '${{ secrets.DBConnection }}'

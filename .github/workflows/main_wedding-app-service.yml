@@ -63,9 +63,3 @@ jobs:
           app-name: 'wedding-app-service'
           slot-name: 'Production'
           package: .
-          
-      - name: Run Database Migrations 
-        run: | 
-            dotnet tool install --global dotnet-ef
-            dotnet tool restore
-            dotnet ef database update "Wedding.dll" --connection '${{ secrets.DBConnection }}'

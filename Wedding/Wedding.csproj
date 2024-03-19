@@ -15,6 +15,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\scss\Readme.txt" />
+    <None Include="wwwroot\templates\invite.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\vendor\bootstrap-icons\bootstrap-icons.css" />
     <None Include="wwwroot\vendor\bootstrap-icons\bootstrap-icons.min.css" />
     <None Include="wwwroot\vendor\bootstrap-icons\bootstrap-icons.scss" />

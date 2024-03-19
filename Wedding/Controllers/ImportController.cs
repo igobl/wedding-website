@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Mail;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Wedding.ef;
@@ -11,10 +10,12 @@ namespace Wedding.Controllers
     public class ImportController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public ImportController(ApplicationDbContext context)
+        public ImportController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -68,6 +69,7 @@ namespace Wedding.Controllers
         public async Task<IActionResult> SendEmails()
         {
             var inviations = await _context.Invitations
+                    .Include(a => a.Attendees)
                     .Where(a => a.SentTimeStamp == null)
                     .Take(100)
                     .ToListAsync();
@@ -77,18 +79,32 @@ namespace Wedding.Controllers
                 // TODO setup a sendgrid account and put in the api here
                 // They also say they do something with templates, but it might be a paid feature.
                 // Dunno just do plain text for now.
-                var apiKey = System.Configuration.ConfigurationManager.AppSettings["SendGridApiKey"];
+                var apiKey = _configuration.GetValue<string>("SendGridApiKey");
+                var invitationBaseUrl = _configuration.GetValue<string>("InvitationBaseUrl");
                 var client = new SendGridClient(apiKey);
 
+                string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "templates", "invite.html");
+                string templateContent = await System.IO.File.ReadAllTextAsync(templatePath);
+                
                 foreach (var invitation in inviations)
                 {
-                    var from = new EmailAddress("ciaraandianwedding@gmail.com", "Ciara and Ian");
-                    var subject = "Wedding Invitation";
+                    string guestFirstNames = string.Join("&", invitation.Attendees.Select(a => a.FirstName));
+                    var from = new EmailAddress("invite@ciaraandianwedding.ie", "Ciara and Ian");
+                    var subject = "Invitation - Ciara & Ian's Wedding";
                     var to = new EmailAddress(invitation.SendTo);
-                    var plainTextContent = "This is a test email";
-                    var htmlContent = "<strong>with some html</strong>";
-                    var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                    var htmlContent = templateContent.
+                        Replace("{guest_name_placeholder}", guestFirstNames)
+                        .Replace("{rsvp_link_placeholder}", $"{invitationBaseUrl}{invitation.PublicId}");
+                    var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlContent);
                     var response = await client.SendEmailAsync(msg);
+                    var responseBody = await response.Body.ReadAsStringAsync();
+
+                    Console.WriteLine(responseBody);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new Exception(responseBody);
+                    }
 
                     invitation.SentTimeStamp = DateTime.UtcNow;
                     await _context.SaveChangesAsync();

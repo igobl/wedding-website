@@ -11,27 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\apple-touch-icon.png" />
-    <None Include="wwwroot\img\favicon.png" />
-    <None Include="wwwroot\img\hero-bg.jpg" />
-    <None Include="wwwroot\img\me.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-1.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-2.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-3.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-4.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-5.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-6.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-7.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-8.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-9.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-details-1.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-details-2.jpg" />
-    <None Include="wwwroot\img\portfolio\portfolio-details-3.jpg" />
-    <None Include="wwwroot\img\testimonials\testimonials-1.jpg" />
-    <None Include="wwwroot\img\testimonials\testimonials-2.jpg" />
-    <None Include="wwwroot\img\testimonials\testimonials-3.jpg" />
-    <None Include="wwwroot\img\testimonials\testimonials-4.jpg" />
-    <None Include="wwwroot\img\testimonials\testimonials-5.jpg" />
     <None Include="wwwroot\js\main.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

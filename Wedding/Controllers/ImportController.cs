@@ -24,8 +24,13 @@ namespace Wedding.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
+            if (id != _configuration.GetValue<string>("ImportSecretKey"))
+            {
+                return Unauthorized();
+            }
+
             var invitations = await _context.Invitations.Include(a => a.Attendees).ToListAsync();
             return View(invitations);
         }

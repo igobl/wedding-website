@@ -56,7 +56,13 @@ namespace Wedding.Controllers
             return View("Index");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [HttpGet]
+        public async Task<IActionResult> Rsvp()
+        {
+                return View("RsvpConfirmation", new ef.Entities.Rsvp());
+        }
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

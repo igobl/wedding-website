@@ -31,7 +31,10 @@ namespace Wedding.Controllers
                 return Unauthorized();
             }
 
-            var invitations = await _context.Invitations.Include(a => a.Attendees).ToListAsync();
+            var invitations = await _context.Invitations
+                .Include(a => a.Attendees)
+                .Include(a => a.Rsvp)
+                .ToListAsync();
             return View(invitations);
         }
 

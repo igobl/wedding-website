@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Wedding.ef.Entities
 {
@@ -8,7 +9,9 @@ namespace Wedding.ef.Entities
         public int Id { get; set; }
         [Required]
         [MaxLength(100)]
+        [DisplayName("Email")]
         public string SendTo { get; set; }
+        [DisplayName("Sent At")]
         public DateTime? SentTimeStamp { get; set; }
         [Required]
         public Guid PublicId { get; set; }

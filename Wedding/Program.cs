@@ -8,9 +8,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WeddingDb"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WeddingDb"), sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(maxRetryCount: 3);
+    });
 });
-
 
 var app = builder.Build();
 

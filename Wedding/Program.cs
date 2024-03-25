@@ -10,7 +10,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WeddingDb"), sqlServerOptionsAction: sqlOptions =>
     {
-        sqlOptions.EnableRetryOnFailure(maxRetryCount: 3);
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 3,
+            maxRetryDelay: TimeSpan.FromSeconds(60),
+            errorNumbersToAdd: null);
     });
 });
 

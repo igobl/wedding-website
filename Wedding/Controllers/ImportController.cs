@@ -92,12 +92,7 @@ namespace Wedding.Controllers
 
             if (inviations.Count > 0)
             {
-                var apiKey = _configuration.GetValue<string>("SendGridApiKey");
                 var invitationBaseUrl = _configuration.GetValue<string>("InvitationBaseUrl");
-                //MailjetClient client = new MailjetClient(Environment.GetEnvironmentVariable("MJ_APIKEY_PUBLIC"), Environment.GetEnvironmentVariable("MJ_APIKEY_PRIVATE"))
-                //{
-                //    Version = ApiVersion.V3_1,
-                //};
                 MailjetClient client = new MailjetClient(
                     _configuration.GetValue<string>("MailJetApiKey"),
                     _configuration.GetValue<string>("MailJetApiSecret"));
@@ -107,11 +102,6 @@ namespace Wedding.Controllers
                     string guestFirstNames = string.Join(" & ", invitation.Attendees.Select(a => a.FirstName));
                     string rsvpLink = $"{invitationBaseUrl}{invitation.PublicId}";
 
-                    MailjetRequest request = new MailjetRequest
-                    {
-                        Resource = Send.Resource
-                    };
-
                     await SendMailJetTemplateEmail(client, invitation.SendTo, guestFirstNames, rsvpLink);
                     invitation.SentTimeStamp = DateTime.UtcNow;
                     await _context.SaveChangesAsync();
@@ -120,31 +110,6 @@ namespace Wedding.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
-        //private async Task SendEmailWithSendGrid(string from, string to, string subject, string content)
-        //{
-        //    string guestFirstNames = string.Join("&", invitation.Attendees.Select(a => a.FirstName));
-        //    var from = new EmailAddress("ian.gobl@flipdish.com", "Ciara and Ian");
-        //    var subject = "Invitation - Ciara & Ian's Wedding";
-        //    var to = new EmailAddress(invitation.SendTo);
-        //    var htmlContent = templateContent.
-        //        Replace("{guest_name_placeholder}", guestFirstNames)
-        //        .Replace("{rsvp_link_placeholder}", $"{invitationBaseUrl}{invitation.PublicId}");
-        //    var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlContent);
-        //    var response = await client.SendEmailAsync(msg);
-        //    var responseBody = await response.Body.ReadAsStringAsync();
-
-        //    Console.WriteLine(responseBody);
-
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        throw new Exception(responseBody);
-        //    }
-
-        //    invitation.SentTimeStamp = DateTime.UtcNow;
-        //    await _context.SaveChangesAsync();
-        //}
 
         private async Task SendMailJetTemplateEmail(MailjetClient client, string to, string guestName, string rsvpLink)
         {
@@ -196,5 +161,87 @@ namespace Wedding.Controllers
                 throw new Exception(error);
             }
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> SendReminders()
+        {
+            var invitationsWithoutResponse = await _context.Invitations
+                .Include(a => a.Attendees)
+                .Include(a => a.Rsvp)
+                .Where(a => a.Rsvp == null)
+                .Take(100)
+                .ToListAsync();
+
+            if (invitationsWithoutResponse.Count > 0)
+            {
+                var invitationBaseUrl = _configuration.GetValue<string>("InvitationBaseUrl");
+                MailjetClient client = new MailjetClient(
+                    _configuration.GetValue<string>("MailJetApiKey"),
+                    _configuration.GetValue<string>("MailJetApiSecret"));
+
+                foreach (var invitation in invitationsWithoutResponse)
+                {
+                    string guestFirstNames = string.Join(" & ", invitation.Attendees.Select(a => a.FirstName));
+                    string rsvpLink = $"{invitationBaseUrl}{invitation.PublicId}";
+
+                    await SendMailJetReminderEmail(client, invitation.SendTo, guestFirstNames, rsvpLink);
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task SendMailJetReminderEmail(MailjetClient client, string to, string guestName, string rsvpLink)
+        {
+            MailjetRequest request = new MailjetRequest
+                {
+                    Resource = SendV31.Resource,
+                }
+                .Property(Send.Messages, new JArray
+                {
+                    new JObject
+                    {
+                        {
+                            "From", new JObject
+                            {
+                                { "Email", "invitation@ciaraandianwedding.ie" },
+                                { "Name", "Ciara and Ian" }
+                            }
+                        },
+                        {
+                            "To", new JArray
+                            {
+                                new JObject
+                                {
+                                    { "Email", to }
+                                }
+                            }
+                        },
+                        { "TemplateID", 6002754 },
+                        { "TemplateLanguage", true },
+                        { "Subject","RSVP Reminder - Ciara & Ian's Wedding" },
+                        {
+                            "Variables", new JObject
+                            {
+                                { "guest_name", guestName },
+                                { "rsvp_link", rsvpLink }
+                            }
+                        }
+                    }
+                });
+            MailjetResponse response = await client.PostAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine(response.GetData());
+            }
+            else
+            {
+                string error =
+                    $"Error sending email to {to}. {response.StatusCode} - {response.GetErrorInfo()} - {response.GetData()} - {response.GetErrorMessage()}";
+                throw new Exception(error);
+            }
+        }
+
     }
 }
